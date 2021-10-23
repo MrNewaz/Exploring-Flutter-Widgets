@@ -25,23 +25,174 @@ class Home extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const Text(
-                'Saif Newaz',
-                style: TextStyle(
-                  color: Colors.amberAccent,
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Image.asset('assets/icon.png'),
-            ],
+      body: SingleChildScrollView(
+        child: Column(children: [
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
           ),
-        ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.account_circle,
+              size: 40,
+              color: Colors.blue,
+            ),
+            title: const Text('Newaz'),
+            subtitle: const Text('Full Stack Developer'),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+              color: Colors.red,
+            ),
+            onTap: () => {},
+          ),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amberAccent,
