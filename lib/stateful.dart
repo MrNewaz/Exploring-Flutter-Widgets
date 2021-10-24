@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+  MyStatefulWidget({
+    Key? key,
+    this.name = 'Saif',
+  }) : super(key: key);
+
+  String name;
 
   @override
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
@@ -18,11 +23,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   Color color = Colors.red;
 
+  String? appName;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stafeul Widget'),
+        title: Text('Hmmms ${widget.name}'),
         centerTitle: true,
         backgroundColor: color,
       ),
