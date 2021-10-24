@@ -16,7 +16,9 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.amberAccent,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(Icons.home),
         ),
         title: Image.asset(
