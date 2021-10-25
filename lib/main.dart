@@ -1,3 +1,4 @@
+import 'package:exploring_widgets/first_screen.dart';
 import 'package:exploring_widgets/stateful.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyStatefulWidget(),
+      home: const FirstScreen(),
     );
   }
 }

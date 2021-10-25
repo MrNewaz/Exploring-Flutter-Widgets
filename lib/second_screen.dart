@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  final String name;
+  const SecondScreen({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Screen'),
+        title: Text('Second Screen $name'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context, 'Saif');
           },
-          child: const Text('Go To Second Page'),
+          child: const Text('Go Back'),
         ),
       ),
     );

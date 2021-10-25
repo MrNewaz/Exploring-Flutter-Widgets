@@ -12,13 +12,16 @@ class FirstScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
+          onPressed: () async {
+            String status = await Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const SecondScreen(),
+                builder: (context) => const SecondScreen(
+                  name: 'Hmmm2',
+                ),
               ),
             );
+            print(status);
           },
           child: const Text('Go To Second Page'),
         ),
