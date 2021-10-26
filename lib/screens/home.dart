@@ -1,3 +1,4 @@
+import 'package:exploring_widgets/screens/all_category.dart';
 import 'package:exploring_widgets/screens/product_detail.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,16 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AllCategory(),
+                    ),
+                  ),
+              icon: const Icon(Icons.view_list))
+        ],
       ),
       body: FutureBuilder(
           future: ApiService().getAllPost(),

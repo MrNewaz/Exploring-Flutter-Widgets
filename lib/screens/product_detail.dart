@@ -20,16 +20,39 @@ class ProductDetail extends StatelessWidget {
           future: ApiService().getOnePost(id),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
+              final item = snapshot.data;
               return Container(
                   margin: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Image.network(
-                        snapshot.data['image'],
+                        item['image'],
                         height: 200,
                         width: double.infinity,
                       ),
-                      Text('Title: ${snapshot.data['title']}')
+                      Text(
+                        'Price: ${item['price']}',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        item['title'],
+                        style: const TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
+                      Chip(
+                        label: Text(
+                          item['category'],
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.blue,
+                      ),
+                      const SizedBox(height: 15),
+                      Text(item['description']),
                     ],
                   ));
             }
@@ -37,6 +60,11 @@ class ProductDetail extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add_shopping_cart),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
