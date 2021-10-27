@@ -1,16 +1,24 @@
 import 'dart:convert';
+import 'package:exploring_widgets/models/product.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  Future getAllPost() async {
+  Future<List<Product>> getAllPost() async {
     final allProductUrl = Uri.parse('https://fakestoreapi.com/products');
 
     final result = await http.get(allProductUrl);
 
-    print(result.statusCode);
-    print(result.body);
+    List<Product> allProducts = [];
+    List body = json.decode(result.body);
 
-    return json.decode(result.body);
+    body.forEach((product) {
+      allProducts.add(Product.fromJSON(product));
+    });
+
+    // print(result.statusCode);
+    // print(result.body);
+
+    return allProducts;
   }
 
   Future getOnePost(int id) async {

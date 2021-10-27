@@ -1,3 +1,4 @@
+import 'package:exploring_widgets/models/product.dart';
 import 'package:exploring_widgets/screens/all_category.dart';
 import 'package:exploring_widgets/screens/cart_screen.dart';
 import 'package:exploring_widgets/screens/product_detail.dart';
@@ -40,22 +41,23 @@ class HomeScreen extends StatelessWidget {
                 child: ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
-                      final dataSet = snapshot.data[index];
+                      Product product = snapshot.data[index];
+
                       return ListTile(
                         leading: Image.network(
-                          dataSet['image'],
+                          product.image,
                           width: 50,
                         ),
-                        title: Text(dataSet['title']),
+                        title: Text(product.title),
                         // subtitle: Text(dataSet['price']),
-                        subtitle: Text('Price: ${dataSet['price']} BDT'),
+                        subtitle: Text('Price: ${product.price} BDT'),
                         onTap: () => {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ProductDetail(
-                                id: dataSet['id'],
-                                name: dataSet['title'],
+                                id: product.id,
+                                name: product.title,
                               ),
                             ),
                           ),
