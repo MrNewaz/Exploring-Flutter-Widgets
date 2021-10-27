@@ -1,10 +1,13 @@
+import 'package:exploring_widgets/screens/home.dart';
+import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
-  final TextEditingController username = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  final TextEditingController username =
+      TextEditingController(text: 'mor_2314');
+  final TextEditingController password = TextEditingController(text: '83r5^_');
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class LoginScreen extends StatelessWidget {
           title: const Text('Login'),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -21,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                 controller: username,
                 decoration: const InputDecoration(
                   labelText: 'Enter Username',
-                  hintText: 'saif_newaz',
+                  hintText: 'username',
                   prefixIcon: Icon(Icons.person),
                   border: OutlineInputBorder(),
                 ),
@@ -36,6 +39,40 @@ class LoginScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
+              const SizedBox(height: 15),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final token =
+                        await ApiService().login(username.text, password.text);
+
+                    if (token['token'] != null) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                          'Success',
+                        ),
+                        backgroundColor: Colors.green,
+                      ));
+                      Future.delayed(
+                          const Duration(seconds: 2),
+                          () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              ));
+                      Future.delayed(const Duration(seconds: 2), () => {});
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Failed'),
+                        backgroundColor: Colors.red,
+                      ));
+                    }
+                  },
+                  child: const Text('Login'),
+                ),
+              )
             ],
           ),
         ));

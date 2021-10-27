@@ -24,8 +24,24 @@ class CartScreen extends StatelessWidget {
                           ApiService().getOnePost(products[index]['productId']),
                       builder: (context, AsyncSnapshot asyncsnapshot) {
                         if (asyncsnapshot.hasData) {
+                          final data = asyncsnapshot.data;
                           return Center(
-                              child: Text(asyncsnapshot.data['title']));
+                            child: ListTile(
+                              leading: Image.network(
+                                data['image'],
+                                width: 50,
+                              ),
+                              title: Text(data['title'].toString()),
+                              subtitle: Text(data['price'].toString()),
+                              trailing: IconButton(
+                                onPressed: () async => {
+                                  await ApiService().deleteCart('${index + 1}'),
+                                },
+                                icon: const Icon(Icons.delete),
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
                         }
                         return const Center(
                           child: LinearProgressIndicator(),

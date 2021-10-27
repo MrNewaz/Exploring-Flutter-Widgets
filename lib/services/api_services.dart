@@ -63,11 +63,80 @@ class ApiService {
   Future login(String username, String password) async {
     final loginUrl = Uri.parse('https://fakestoreapi.com/auth/login');
 
-    final result = await http.post(loginUrl, body: {username, password});
+    try {
+      final result = await http.post(loginUrl, body: {
+        "username": username,
+        "password": password,
+      });
 
-    print(result.statusCode);
-    print(result.body);
+      print(result.statusCode);
+      print(result.body);
 
-    return json.decode(result.body);
+      return json.decode(result.body);
+    } catch (e) {
+      return {'message': e};
+    }
+  }
+
+  // Post Request with UserAccountsDrawerHeader
+  Future loginWithHeaders(String username, String password) async {
+    final loginUrl = Uri.parse('https://fakestoreapi.com/auth/login');
+    final token = 'random token';
+    try {
+      final result = await http.post(
+        loginUrl,
+        body: {
+          "username": username,
+          "password": password,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer $token'
+        },
+      );
+
+      print(result.statusCode);
+      print(result.body);
+
+      return json.decode(result.body);
+    } catch (e) {
+      return {'message': e};
+    }
+  }
+
+  // put Request
+  Future updateCart(int id, int productId) async {
+    final cartUrl = Uri.parse('https://fakestoreapi.com/carts/$id');
+
+    try {
+      final result = await http.put(cartUrl, body: {
+        'userId': '3',
+        'date': DateTime.now().toString(),
+        'products': [
+          {'productId': '$productId', 'quantity': 3}
+        ].toString()
+      });
+
+      print(result.statusCode);
+      print(result.body);
+
+      return json.decode(result.body);
+    } catch (e) {
+      print(e);
+      return {'message': e};
+    }
+  }
+
+  // delete Request
+  Future deleteCart(String id) async {
+    final cartUrl = Uri.parse('https://fakestoreapi.com/carts/$id');
+
+    try {
+      final result = await http.delete(cartUrl);
+      print(result.body);
+    } catch (e) {
+      print(e);
+      return {'message': e};
+    }
   }
 }
