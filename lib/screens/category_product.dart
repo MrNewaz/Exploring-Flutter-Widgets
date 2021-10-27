@@ -1,39 +1,23 @@
-import 'package:exploring_widgets/screens/all_category.dart';
-import 'package:exploring_widgets/screens/cart_screen.dart';
 import 'package:exploring_widgets/screens/product_detail.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class CategoryProduct extends StatelessWidget {
+  final String categoryName;
+  const CategoryProduct({
+    Key? key,
+    required this.categoryName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Text(categoryName),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AllCategory(),
-                    ),
-                  ),
-              icon: const Icon(Icons.view_list)),
-          IconButton(
-              onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CartScreen(),
-                    ),
-                  ),
-              icon: const Icon(Icons.shopping_cart))
-        ],
       ),
       body: FutureBuilder(
-          future: ApiService().getAllPost(),
+          future: ApiService().getProductByCategory(categoryName),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return Center(

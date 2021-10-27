@@ -1,3 +1,4 @@
+import 'package:exploring_widgets/screens/category_product.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,16 @@ class AllCategory extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final data = snapshot.data[index];
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoryProduct(
+                              categoryName: data,
+                            ),
+                          ),
+                        );
+                      },
                       child: Card(
                           elevation: 2,
                           shape: RoundedRectangleBorder(
