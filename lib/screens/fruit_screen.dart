@@ -2,8 +2,8 @@ import 'package:exploring_widgets/models/fruit.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
 
-class AllFruits extends StatelessWidget {
-  const AllFruits({Key? key}) : super(key: key);
+class FruitScreen extends StatelessWidget {
+  const FruitScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

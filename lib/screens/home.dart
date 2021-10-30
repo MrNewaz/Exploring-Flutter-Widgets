@@ -1,6 +1,7 @@
 import 'package:exploring_widgets/models/product.dart';
 import 'package:exploring_widgets/screens/all_category.dart';
 import 'package:exploring_widgets/screens/cart_screen.dart';
+import 'package:exploring_widgets/screens/fruit_screen.dart';
 import 'package:exploring_widgets/screens/product_detail.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,16 @@ class HomeScreen extends StatelessWidget {
                       builder: (context) => const CartScreen(),
                     ),
                   ),
-              icon: const Icon(Icons.shopping_cart))
+              icon: const Icon(Icons.shopping_cart)),
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FruitScreen(),
+              ),
+            ),
+            icon: const Icon(Icons.food_bank),
+          )
         ],
       ),
       body: FutureBuilder(
