@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:exploring_widgets/models/fruit.dart';
 import 'package:exploring_widgets/models/product.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,7 +30,8 @@ class ApiService {
     print(result.statusCode);
     print(result.body);
 
-    return json.decode(result.body);
+    var body = json.decode(result.body);
+    return Product.fromJSON(body);
   }
 
   Future getAllCategory() async {
@@ -144,6 +146,24 @@ class ApiService {
       print(result.body);
     } catch (e) {
       print(e);
+      return {'message': e};
+    }
+  }
+
+  Future getFruits() async {
+    final fruitURL = Uri.parse('https://www.fruityvice.com/api/fruit/all');
+
+    try {
+      final result = await http.get(fruitURL);
+
+      List body = json.decode(result.body);
+      List<Fruit> allFruits =
+          body.map((fruit) => Fruit.fromJson(fruit)).toList();
+
+      return allFruits;
+    } catch (e) {
+      print(e);
+
       return {'message': e};
     }
   }

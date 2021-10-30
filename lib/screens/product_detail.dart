@@ -1,3 +1,4 @@
+import 'package:exploring_widgets/models/product.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
 
@@ -20,18 +21,18 @@ class ProductDetail extends StatelessWidget {
           future: ApiService().getOnePost(id),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              final item = snapshot.data;
+              Product product = snapshot.data;
               return Container(
                   margin: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Image.network(
-                        item['image'],
+                        product.image,
                         height: 200,
                         width: double.infinity,
                       ),
                       Text(
-                        'Price: ${item['price']}',
+                        'Price: ${product.price}',
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -39,20 +40,20 @@ class ProductDetail extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        item['title'],
+                        product.title,
                         style: const TextStyle(
                           fontSize: 25,
                         ),
                       ),
                       Chip(
                         label: Text(
-                          item['category'],
+                          product.category,
                           style: const TextStyle(color: Colors.white),
                         ),
                         backgroundColor: Colors.blue,
                       ),
                       const SizedBox(height: 15),
-                      Text(item['description']),
+                      Text(product.description),
                     ],
                   ));
             }

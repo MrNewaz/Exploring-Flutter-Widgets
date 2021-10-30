@@ -1,3 +1,4 @@
+import 'package:exploring_widgets/models/product.dart';
 import 'package:exploring_widgets/services/api_services.dart';
 import 'package:flutter/material.dart';
 
@@ -24,15 +25,15 @@ class CartScreen extends StatelessWidget {
                           ApiService().getOnePost(products[index]['productId']),
                       builder: (context, AsyncSnapshot asyncsnapshot) {
                         if (asyncsnapshot.hasData) {
-                          final data = asyncsnapshot.data;
+                          Product product = asyncsnapshot.data;
                           return Center(
                             child: ListTile(
                               leading: Image.network(
-                                data['image'],
+                                product.image,
                                 width: 50,
                               ),
-                              title: Text(data['title'].toString()),
-                              subtitle: Text(data['price'].toString()),
+                              title: Text(product.title.toString()),
+                              subtitle: Text(product.price.toString()),
                               trailing: IconButton(
                                 onPressed: () async => {
                                   await ApiService().deleteCart('${index + 1}'),
